@@ -24,7 +24,7 @@ $(document).ready(function() {
     }).fail(function(result){
       alert(result['responseText']);
     });
-})
+});
 
   $("#new-conversation").on("submit", function(event) {
     event.preventDefault();
