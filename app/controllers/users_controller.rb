@@ -13,6 +13,21 @@ class UsersController < ApplicationController
     end
   end
 
+  def login
+    @user = User.new
+  end
+
+  def auth
+    @user = User.find_by(username: params[:user][:username])
+
+    if @user && @user.authenticate(params[:user][:password])
+      redirect_to root_path
+    else
+      @user.errors[:base] << "Wrong username / password combination."
+      render :login
+    end
+  end
+
   private
 
   def user_params
