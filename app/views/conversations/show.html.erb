@@ -1,0 +1,8 @@
+<h4><%=@conversation.name %>: Messages </h4>
+
+<% sort_by_date_desc(@conversation.messages).each do |message| %>
+  <div><%= message.updated_at.strftime("%B %-d at %l:%M %p") %></div>
+  <div><%= message.user.username %></div>
+  <div><%= message.content %></div>
+  <br>
+<% end %>

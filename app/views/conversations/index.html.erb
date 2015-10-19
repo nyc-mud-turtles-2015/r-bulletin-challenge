@@ -1,0 +1,3 @@
+<% @conversations.each do |conversation| %>
+  <div><a href = '/conversations/<%= conversation.id %>'> <%= conversation.name %> </a></div>
+<% end %>
