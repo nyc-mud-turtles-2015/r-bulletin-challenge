@@ -8,7 +8,7 @@ class MessagesController < ApplicationController
     if @message.save
       redirect_to conversation_path(@message.conversation, anchor: @message.id)
     else
-      render 'new'
+      redirect_to conversation_path(@message.conversation, anchor: 'new_message', flash: {error: @message.errors.full_messages.join(', ')})
     end
   end
 
