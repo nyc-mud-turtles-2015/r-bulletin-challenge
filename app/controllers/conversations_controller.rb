@@ -1,4 +1,6 @@
 class ConversationsController < ApplicationController
+
+
   def show
     @conversation = find_convo
   end
