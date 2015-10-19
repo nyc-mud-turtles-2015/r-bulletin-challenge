@@ -7,8 +7,9 @@ Rails.application.routes.draw do
 
   resources :topics, only: [:show]
 
-  resources :conversations, only: [:show]
+  get 'conversations/recent' => 'conversations#recent'
 
+  resources :conversations, only: [:show]
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
