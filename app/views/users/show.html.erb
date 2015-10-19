@@ -1,1 +1,16 @@
 <%= @user.username%>'s Profile
+<p></p>
+<h3> Messages by <%= @user.username%> </h3>
+<% sort_by_date_desc(@user.messages).each do |message| %>
+  <div><%= message.content %></div>
+  <div><%= message.conversation.name %></div>
+  <div><%= message.created_at %></div>
+<% end %>
+
+<p></p>
+<h3> Conversations by <%= @user.username%> </h3>
+<% sort_by_date_desc(@user.conversations).each do |conversation| %>
+  <div><%= conversation.name %></div>
+  <div><%= conversation.created_at %></div>
+<% end %>
+

@@ -5,3 +5,5 @@
   <div><a href = '/conversations/<%= conversation.id %>'> <%= conversation.name %> </a></div>
   <br>
 <% end %>
+
+<%=link_to 'Add a new conversation to this topic!', new_conversation_path(:topic => @topic.id) %>
