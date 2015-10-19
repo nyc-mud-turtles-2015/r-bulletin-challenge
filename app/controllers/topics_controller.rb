@@ -6,7 +6,10 @@ class TopicsController < ApplicationController
   def show
     @topic = find_topic
     @conversations = @topic.conversations.sort_by{|convo| convo.messages.last.created_at }.reverse
+    @conversation = Conversation.new
+    @conversation.messages.build
   end
+
 
   private
 
