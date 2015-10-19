@@ -1,30 +1,14 @@
 class UsersController < ApplicationController
-
-  def register
+  def new
     @user = User.new
   end
 
-  def signup
+  def create
     @user = User.new(user_params)
     if @user.save
       redirect_to root_path
     else
-      render :register
-    end
-  end
-
-  def login
-    @user = User.new
-  end
-
-  def auth
-    @user = User.find_by(username: params[:user][:username])
-
-    if @user && @user.authenticate(params[:user][:password])
-      redirect_to root_path
-    else
-      @user.errors[:base] << "Wrong username / password combination."
-      render :login
+      render :new
     end
   end
 

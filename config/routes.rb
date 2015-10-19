@@ -9,10 +9,9 @@ Rails.application.routes.draw do
     end
   end
 
-  # resources :users, only: [:new, :create]
-  get '/register', to:'users#register'
-  post '/register', to:'users#signup'
+  resources :users, only: [:new, :create]
 
-  get '/login', to: 'users#login'
-  post '/login', to: 'users#auth'
+  resources :sessions, only: [:new, :create, :destroy]
+
+  get '/register', to: 'users#new'
 end
