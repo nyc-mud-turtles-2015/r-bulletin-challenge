@@ -8,4 +8,6 @@ Rails.application.routes.draw do
       end
     end
   end
+
+  resources :users, only: [:new, :create]
 end
