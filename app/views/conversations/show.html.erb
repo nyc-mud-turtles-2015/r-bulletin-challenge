@@ -1,3 +1,5 @@
+<h2><%= link_to "Post New Message", new_conversation_message_path(@conversation) %></h2>
+
 <% @messages.each do |message| %>
   <div class="message">
     <p><%= message.content %></p>
