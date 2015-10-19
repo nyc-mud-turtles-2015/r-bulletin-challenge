@@ -1,4 +1,4 @@
 <h1>Active conversations:</h1>
 <% @active_conversations.each do |conversation| %>
-  <h2><%= conversation.name %> by <%= conversation.user %></h2>
+  <h2><%= conversation.name %> by <%= conversation.author.username %></h2>
 <% end %>
