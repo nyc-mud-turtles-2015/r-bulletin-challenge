@@ -15,11 +15,11 @@ Category.create!(name:'Miscellaneous', display_order:40)
 cats = Category.all
 
 12.times do
-  top = Topic.create!(name: Faker::Company.catch_phrase, category: cats.sample)
+  top = Topic.create!(name: Faker::Company.catch_phrase, category: cats.sample, created_at: Faker::Date.backward(10))
   6.times do
-    thr = Conversation.create!(name:Faker::Commerce.product_name, topic:top, author:u )
+    thr = Conversation.create!(name:Faker::Commerce.product_name, topic:top, author:u, created_at: Faker::Date.backward(10))
     Random.rand(20).times do
-      msg = Message.create!(user:u, conversation:thr, content:Faker::Lorem.sentence)
+      msg = Message.create!(user:u, conversation:thr, content:Faker::Lorem.sentence, created_at: Faker::Date.backward(10))
     end
   end
 end
