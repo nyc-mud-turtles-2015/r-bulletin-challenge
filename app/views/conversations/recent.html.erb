@@ -1,13 +1,6 @@
-<h1>Recent Messages</h1>
-<div class="message-list">
-<% @recent_messages.each do |message| %>
-  <article>
-    <p><%= message.content %></p>
-    <footer>
-      Posted by <%= message.user.username %>
-      at <%= message.created_at %>
-      in <%= link_to message.conversation.name, conversation_path(message.conversation, anchor: message.id) %>
-    </footer>
-  </article>
+<h1>Recent Conversations</h1>
+<ul class="conversation-list">
+<% @recent_conversations.each do |conversation| %>
+    <li><%= link_to conversation.name, conversation_path(conversation) %> - last comment on <%= conversation.messages.first.created_at %></li>
 <% end %>
-</div>
+</ul>

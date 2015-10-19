@@ -4,4 +4,16 @@ class Conversation < ActiveRecord::Base
   has_many :messages
 
   validates_presence_of :name
+
+  # gets conversations from latest n messages,
+  # want to get last n conversations from latest messages
+  # not sure how
+  def self.recently_active(n)
+    Conversation
+    .includes(:messages)
+    .joins(:messages)
+    .order("messages.created_at DESC")
+    .group("conversations.id, messages.id")
+    .limit(n)
+  end
 end

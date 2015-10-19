@@ -11,6 +11,10 @@ class MessagesController < ApplicationController
     end
   end
 
+  def recent
+    @recent_messages = Message.order(created_at: :desc).limit(25)
+  end
+
   private
     def message_params
       params.require(:message).permit(:content)

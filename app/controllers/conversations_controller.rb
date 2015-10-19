@@ -7,7 +7,7 @@ class ConversationsController < ApplicationController
   end
 
   def recent
-    @recent_messages = Message.order(created_at: :desc).limit(25)
+    @recent_conversations = Conversation.recently_active(25)
   end
 
   def create

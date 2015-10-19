@@ -11,6 +11,8 @@ Rails.application.routes.draw do
 
   get 'conversations/recent' => 'conversations#recent'
 
+  get 'messages/recent' => 'messages#recent'
+
   resources :conversations, only: [:show] do
     resources :messages, only: [:create]
   end
