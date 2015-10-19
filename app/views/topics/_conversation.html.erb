@@ -1,0 +1,3 @@
+<%= link_to(conversation) do %>
+<li><%= conversation.name %> | <%= time_ago_in_words(conversation.messages.last.created_at) %></li>
+<% end %>

@@ -1,0 +1,4 @@
+<h3><%= @conversation.name %></h3>
+<ul>
+  <%= render partial: 'message', collection: @conversation.messages %>
+</ul>
