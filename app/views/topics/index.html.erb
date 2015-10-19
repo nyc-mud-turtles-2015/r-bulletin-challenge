@@ -1,0 +1,3 @@
+<% @topics.each do |topic| %>
+  <h1><%= link_to topic.name, topic_path(topic) %> (Category: <%= topic.category.name %>)</h1>
+<% end %>
