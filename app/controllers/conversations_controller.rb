@@ -1,7 +1,8 @@
 class ConversationsController < ApplicationController
 
   def show
-    @messages = Conversation.find(params[:id]).messages.order(created_at: :desc)
+    @message = Message.new
+    @messages = Conversation.find(params[:id]).messages.order(:created_at)
   end
 
   def recent
