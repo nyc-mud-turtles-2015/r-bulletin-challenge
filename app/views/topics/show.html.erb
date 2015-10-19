@@ -1,0 +1,4 @@
+<h1><%= @topic.name %></h1>
+<% @topic.conversations.each do |conversation| %>
+  <h2><%= link_to conversation.name, conversation_path %> by <%= conversation.author.username %></h2>
+<% end %>

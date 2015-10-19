@@ -1,0 +1,9 @@
+
+<h1><%= @conversation.name %></h1>
+<% @conversation.messages.each do |message| %>
+  <h2><%= message.content %></h2>
+  <h5><%= message.user.username %></h5>
+<% end %>
+
+
+<%= link_to "Write a new message!", new_message_path(@conversation) %>
