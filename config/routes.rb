@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get '/register' => 'accounts#register', as: 'register'
   resources :accounts
   post '/authenticate'=> 'accounts#authenticate', as: 'authenticate'
+  resources :messages
   # match "/conversations/active", :to => 'conversations#active'
 
   # The priority is based upon order of creation: first created -> highest priority.
