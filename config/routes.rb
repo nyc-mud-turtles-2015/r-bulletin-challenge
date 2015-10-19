@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'topics#index'
 
-  resources :topics, only: [:show]
+  resources :topics, only: [:show] do
+    resources :conversations, only: [:create]
+  end
 
   get 'conversations/recent' => 'conversations#recent'
 
