@@ -9,13 +9,16 @@ Rails.application.routes.draw do
 
   get 'conversations/recent' => 'conversations#recent'
 
-  resources :conversations, only: [:show]
+  resources :conversations, only: [:show] do
+    resources :messages, only: [:create]
+  end
 
   get 'login'     => 'sessions#new'
   post 'login'    => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
 
   resources :users, only: [:new, :create]
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
