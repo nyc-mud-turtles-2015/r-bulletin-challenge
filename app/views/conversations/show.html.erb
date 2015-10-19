@@ -1,7 +1,7 @@
 <h1>Messages in "<%= @messages.first.conversation.name %>"</h1>
 <div class="message-list">
 <% @messages.each do |message| %>
-  <article>
+  <article id="<%= message.id %>">
     <p><%= message.content %></p>
     <footer>Posted by <%= message.user.username %> at <%= message.created_at %></footer>
   </article>

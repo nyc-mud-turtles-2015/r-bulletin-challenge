@@ -6,7 +6,7 @@
     <footer>
       Posted by <%= message.user.username %>
       at <%= message.created_at %>
-      in <%= link_to message.conversation.name, conversation_path(message.conversation) %>
+      in <%= link_to message.conversation.name, conversation_path(message.conversation, anchor: message.id) %>
     </footer>
   </article>
 <% end %>
