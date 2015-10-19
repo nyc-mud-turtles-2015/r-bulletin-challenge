@@ -11,6 +11,9 @@ Rails.application.routes.draw do
 
   resources :conversations, only: [:show]
 
+  get 'users/login' => 'users#login'
+  get 'users/logout' => 'users#logout'
+
   resources :users, only: [:new, :create]
 
   # Example of regular route:
