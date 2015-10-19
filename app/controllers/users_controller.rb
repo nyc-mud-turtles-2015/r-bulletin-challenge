@@ -1,16 +1,15 @@
 class UsersController < ApplicationController
 
-  def new
+  def register
     @user = User.new
   end
 
-  def create
+  def signup
     @user = User.new(user_params)
-
     if @user.save
       redirect_to root_path
     else
-      render :new
+      render :register
     end
   end
 
