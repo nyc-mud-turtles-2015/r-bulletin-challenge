@@ -6,3 +6,5 @@
   <div><%= message.content %></div>
   <br>
 <% end %>
+
+<%=link_to 'Add a new message to this conversation!', new_message_path(:conversation => @conversation.id) %>
