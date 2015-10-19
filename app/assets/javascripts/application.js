@@ -39,4 +39,16 @@ $(document).ready(function() {
       alert(result['responseText']);
     });
   })
+
+  $(".like-button").on("click", function(event) {
+    event.preventDefault();
+
+    if ($(this).text() == "like") {
+      $(this).text('unlike');
+    } else {
+      $(this).text('like');
+    }
+
+
+  })
 })
