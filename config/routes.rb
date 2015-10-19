@@ -11,8 +11,9 @@ Rails.application.routes.draw do
 
   resources :conversations, only: [:show]
 
-  get 'users/login' => 'users#login'
-  get 'users/logout' => 'users#logout'
+  get 'login'     => 'sessions#new'
+  post 'login'    => 'sessions#create'
+  delete 'logout' => 'sessions#destroy'
 
   resources :users, only: [:new, :create]
 
