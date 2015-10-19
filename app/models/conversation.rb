@@ -8,6 +8,3 @@ class Conversation < ActiveRecord::Base
   end
 
 end
-
-
-   # messages.recent.order(created_at: :DESC).first
