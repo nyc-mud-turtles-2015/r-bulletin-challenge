@@ -1,4 +1,29 @@
 Rails.application.routes.draw do
+  resources :users
+
+  resources :categories, only: [:index, :show] do
+    resources :topics, only: [:index, :show]
+  end
+
+  resources :topics, only: [:index, :show] do
+    resources :conversations do
+      collection do
+        get 'latest'
+      end
+    end
+  end
+
+  resources :conversations, except: [:create] do
+    resources :messages
+  end
+
+  get 'register' => 'users#new', as: 'register'
+  post 'register' => 'users#create'
+  get 'login' => 'users#login_form'#, as: 'login'
+  post 'login' => 'users#login'
+  get 'logout' => 'users#logout', as: 'logout'
+  # get '/categories/:id' => 'topics#index'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
