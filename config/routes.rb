@@ -6,6 +6,10 @@ Rails.application.routes.draw do
   root 'topics#index'
 
   resources :topics, only: [:show]
+
+  resources :conversations, only: [:show]
+
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
