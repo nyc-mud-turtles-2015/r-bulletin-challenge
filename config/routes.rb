@@ -12,4 +12,7 @@ Rails.application.routes.draw do
   # resources :users, only: [:new, :create]
   get '/register', to:'users#register'
   post '/register', to:'users#signup'
+
+  get '/login', to: 'users#login'
+  post '/login', to: 'users#auth'
 end
