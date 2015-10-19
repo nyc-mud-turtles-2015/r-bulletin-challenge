@@ -10,7 +10,7 @@ class ConversationsController < ApplicationController
     @conversation.messages.first.user = current_user
     if @conversation.save
       if request.xhr?
-        render plain: "<li>yuck!</li>"
+        render partial: "topics/conversation", locals: {conversation: @conversation}
       else
         redirect_to @conversation
       end

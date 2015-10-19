@@ -5,10 +5,10 @@ class Conversation < ActiveRecord::Base
 
   accepts_nested_attributes_for :messages
   validates :name, presence: true
-  # validate :message_exists
+  validate :message_exists
 
   private
   def message_exists
-    errors.add(:base, "No message present") if messages.count < 1
+    errors.add(:base, "No message present") if self.messages.empty?
   end
 end
