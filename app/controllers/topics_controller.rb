@@ -4,5 +4,6 @@ class TopicsController < ApplicationController
   end
 
   def show
+    @conversations = Topic.find(params[:id]).conversations
   end
 end
