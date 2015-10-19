@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
 
-  resources :users, only: [:create, :new, :show]
   get '/users/login', to: 'users#login', as: 'login'
-  post '/users/login', to: 'users#login'
+  post '/users/login', to: 'users#authenticate'
   get '/users/logout', to: 'users#logout', as: 'logout'
+  resources :users, only: [:create, :new, :show]
 
   resources :topics
 
