@@ -14,4 +14,8 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
 
   get '/register', to: 'users#new'
+
+  get '/login', to: 'sessions#new'
+
+  post '/login', to: 'sessions#create'
 end
