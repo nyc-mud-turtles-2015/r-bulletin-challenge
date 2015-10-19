@@ -1,0 +1,10 @@
+<h2>Making a message on the conversation: <%= @conversation.name%></h2>
+
+<%= form_for @message, url: {action: "create"} do |f| %>
+
+  <%= render 'errors' %>
+
+  <%= f.label :content %>
+  <%= f.text_area :content, placeholder: "Content of the message"%>
+  <%= f.submit %>
+<% end %>

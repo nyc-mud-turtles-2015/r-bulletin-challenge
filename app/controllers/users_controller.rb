@@ -12,7 +12,7 @@ class UsersController < ApplicationController
       redirect_to topics_url
       # redirect "/users/#{@user.id}"
     else
-      # @errors = @user.errors.full_messages
+      @errors = @user.errors
       render 'new'
     end
   end
@@ -28,9 +28,10 @@ class UsersController < ApplicationController
       redirect_to topics_url
       # redirect "/users/#{@user.id}"
     else
-      # @errors = @user.errors.full_messages
       @user = User.new
       @user.errors.add(:username, ": didnt sign in, check the username and password fields again")
+      @errors = @user.errors
+      # binding.pry
       render 'login'
     end
   end
