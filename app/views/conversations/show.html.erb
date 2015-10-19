@@ -1,4 +1,4 @@
-<h1>Messages in "<%= @messages.first.conversation.name %>"</h1>
+<h1>Messages in "<%= @conversation.name %>"</h1>
 <div class="message-list">
 <% @messages.each do |message| %>
   <article id="<%= message.id %>">
@@ -8,7 +8,7 @@
 <% end %>
 </div>
 
-<%= form_for @message, url: conversation_messages_path(@messages.first.conversation) do |f| %>
+<%= form_for @message, url: conversation_messages_path(@conversation) do |f| %>
   <%= f.label :content %>
   <%= f.text_area :content %>
   <%= f.submit "Post to conversation" %>
