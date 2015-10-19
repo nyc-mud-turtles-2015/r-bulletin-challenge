@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
   root to: 'topics#index'
 
-  resources :topics, only: [:index, :show] do
-    resources :conversations, only: [:show, :index] do
-      collection do
-        get 'active'
-      end
+  resources :topics, only: [:index, :show]
+
+  resources :conversations, only: [:show, :index] do
+    resources :messages, only: [:new, :create]
+
+    collection do
+      get 'active'
     end
   end
 
