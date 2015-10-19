@@ -8,7 +8,7 @@ module SessionsHelper
     @current_user ||= User.find_by(session[:user_id])
   end
 
-  def current_username
+  def current_user_name
     session[:user_name]
   end
 
@@ -18,8 +18,8 @@ module SessionsHelper
   end
 
   def logout
-    session.delete[:user_id]
-    session.delete[:user_name]
+    session.delete(:user_id)
+    session.delete(:user_name)
   end
 
 end
