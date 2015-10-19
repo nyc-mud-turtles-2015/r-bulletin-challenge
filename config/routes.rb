@@ -1,4 +1,23 @@
 Rails.application.routes.draw do
+
+  get '/users/login', to: 'users#login', as: 'login'
+  post '/users/login', to: 'users#authenticate'
+  get '/users/logout', to: 'users#logout', as: 'logout'
+  resources :users, only: [:create, :new, :show]
+
+  resources :topics
+
+  resources :topics do
+    resources :conversations
+  end
+
+  get '/conversations/recent', to: 'conversations#recent', as: 'recentconvos'
+
+  resources :conversations do
+    resources :messages
+  end
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
