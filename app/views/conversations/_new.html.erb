@@ -1,0 +1,19 @@
+<% if @errors %>
+  <ul>
+  <% @errors.each do |error| %>
+    <li><%= error %></li>
+  <% end %>
+  <ul>
+<% end %>
+<h4>Make a New Conversation</h4>
+<%= form_for @conversation, html: {id: 'new-conversation'} do |f| %>
+Name: <%= f.text_field :name %>
+<%= hidden_field(:conversation, :topic_id, value: @topic.id) %>
+  <div>
+    <%= f.fields_for :messages do |messages_form| %>
+      <%= messages_form.label :message %>
+      <%= messages_form.text_area :content %>
+    <% end %>
+  </div>
+<%= f.submit "Submit" %>
+<% end %>

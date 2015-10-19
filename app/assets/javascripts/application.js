@@ -13,3 +13,42 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+$(document).ready(function() {
+  $("#new-message").on("submit", function(event){
+    event.preventDefault();
+    $.post( $(this).attr("action") , $(this).serializeArray()).done( function(result)
+    {
+      $("#messageslist").prepend(result);
+      $("#new-message").trigger('reset');
+    }).fail(function(result){
+      alert(result['responseText']);
+    });
+});
+
+  $("#new-conversation").on("submit", function(event) {
+    event.preventDefault();
+    $.ajax({
+      url: $(this).attr("action"),
+      data: $(this).serialize(),
+      type: $(this).attr("method")
+    }).done(function(result){
+      $("#conversation-list").prepend(result);
+      $("#new-conversation").trigger('reset');
+    }).fail(function(result){
+      alert(result['responseText']);
+    });
+  })
+
+  $(".like-button").on("click", function(event) {
+    event.preventDefault();
+
+    if ($(this).text() == "like") {
+      $(this).text('unlike');
+    } else {
+      $(this).text('like');
+    }
+
+
+  })
+})

@@ -1,0 +1,8 @@
+<h1>Make your message now for less free</h1>
+
+<%= form_for :message, :html=> {:id => 'new-message'}, url: "/messages" do |f| %>
+  Content:  <%= f.text_area :content %>
+  <%= hidden_field(:message, :conversation_id, value: @conversation.id) %>
+  <%= f.submit "Submit" %>
+
+<% end %>

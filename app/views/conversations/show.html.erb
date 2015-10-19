@@ -1,0 +1,6 @@
+<h3><%= @conversation.name %></h3>
+<ul id="messageslist">
+  <%= render partial: 'message', collection: @conversation.messages %>
+</ul>
+
+<%= render partial: 'messages/new' %>
