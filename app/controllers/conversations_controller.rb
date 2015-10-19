@@ -1,5 +1,4 @@
 class ConversationsController < ApplicationController
-  def index
-    p params
+  def show
   end
 end
