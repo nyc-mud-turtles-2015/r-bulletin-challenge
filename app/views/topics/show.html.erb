@@ -1,0 +1,9 @@
+<h4><%=@topic.name %>: Conversations </h4>
+
+<% sort_by_date_desc(@topic.conversations).each do |conversation| %>
+  <div>Last Updated at <%= conversation.updated_at.strftime("%B %-d at %l:%M %p") %></div>
+  <div><a href = '/conversations/<%= conversation.id %>'> <%= conversation.name %> </a></div>
+  <br>
+<% end %>
+
+<%=link_to 'Add a new conversation to this topic!', new_conversation_path(:topic => @topic.id) %>

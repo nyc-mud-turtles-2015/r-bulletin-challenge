@@ -1,0 +1,8 @@
+<h4> Add a conversation! </h4>
+
+<%= form_for @conversation, url: {action: "create"} do |f| %>
+  <%= f.text_field :name %>
+  <%= f.hidden_field :topic_id, :value => @topic.id%>
+  <%= f.hidden_field :user_id, :value => current_user.id%>
+  <%= f.submit "Create" %>
+<% end %>

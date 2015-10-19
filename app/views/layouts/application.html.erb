@@ -5,6 +5,15 @@
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
+  <li><%= link_to 'Home', root_path %></li>
+<% if logged_in? %>
+<li><%=link_to 'logout', logout_path, method: 'delete' %></li>
+<li><%=link_to 'My Profile', user_path(:id => current_user.id) %> </li>
+
+<% else %>
+<li><%=link_to 'login', login_path %></li>
+<li><%=link_to 'sign up', new_user_path %></li>
+<% end %>
 </head>
 <body>
 

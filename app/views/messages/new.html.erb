@@ -1,0 +1,8 @@
+<h4> Add a message! </h4>
+
+<%= form_for @message, url: {action: "create"} do |f| %>
+  <%= f.text_area :content, size: "60x12" %>
+  <%= f.hidden_field :conversation_id, :value => @conversation.id%>
+  <%= f.hidden_field :user_id, :value => current_user.id%>
+  <%= f.submit "Create" %>
+<% end %>
