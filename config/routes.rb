@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :users
+  resources :users, except: [:update, :edit, :destroy]
 
   resources :categories, only: [:index, :show] do
     resources :topics, only: [:index, :show]
