@@ -4,8 +4,8 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    category = Category.find(params[:id])
+    category = Category.find_by(id: params[:id])
     @topics = category.topics
-    render '/topics/index'
+    redirect_to category_topics_path(category)
   end
 end

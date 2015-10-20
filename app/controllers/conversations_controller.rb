@@ -3,7 +3,7 @@ class ConversationsController < ApplicationController
   before_action :load_conversation, only: [:show, :edit]
 
   def index
-    @topic = Topic.find(params[:topic_id])
+    @topic = Topic.find_by(id: params[:topic_id])
     @conversations = @topic.conversations
   end
 
@@ -23,8 +23,8 @@ class ConversationsController < ApplicationController
   end
 
   def latest
-    @conversations = Topic.find_by(id: params[:topic_id]).conversations.order(created_at: :desc).limit(5)
-    render '/conversations/index'
+    @conversations = Topic.find_by(id: params[:topic_id]).conversations.order(created_at: :desc).limit(3)
+    redirect_to topic_conversations_path(params[:topic_id])
   end
 
   private
