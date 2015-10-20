@@ -17,6 +17,7 @@ class UsersController < ApplicationController
     @user = User.find_by(id: params[:id])
 
     if @user && @user.id == session[:user_id]
+      @latest_messages = @user.messages.order(created_at: :desc).limit(5)
       @conversations = Conversation.where("user_id = ?", @user)
       render :show
     else
