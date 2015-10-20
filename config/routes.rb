@@ -19,9 +19,9 @@ Rails.application.routes.draw do
 
   get 'register' => 'users#new', as: 'register'
   post 'register' => 'users#create'
-  get 'login' => 'users#login_form'#, as: 'login'
-  post 'login' => 'users#login'
-  get 'logout' => 'users#logout', as: 'logout'
+  get 'login' => 'sessions#login_form'#, as: 'login'
+  post 'login' => 'sessions#login'
+  get 'logout' => 'sessions#logout', as: 'logout'
   # get '/categories/:id' => 'topics#index'
 
   # The priority is based upon order of creation: first created -> highest priority.

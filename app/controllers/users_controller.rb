@@ -17,28 +17,8 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to @user
     else
-      flash[:error] = "Invalid username, email or password"
-      render "new"
+      flash[:error] = @user.errors.full_messages
+      redirect_to register_path
     end
-  end
-
-  def login_form
-    render "/users/login"
-  end
-
-  def login
-    @user = User.find_by(username: params[:user][:username])
-    if @user && @user.authenticate(params[:user][:password])
-      session[:user_id] = @user.id
-      redirect_to @user
-    else
-      flash[:error] = "Invalid username, email or password"
-      render "new"
-    end
-  end
-
-  def logout
-    session.destroy
-    redirect_to categories_path
   end
 end
