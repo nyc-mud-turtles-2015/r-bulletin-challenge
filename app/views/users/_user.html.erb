@@ -1,0 +1,11 @@
+Welcome, <%= user.email %>
+<div>
+<% user.messages.first(5).each do |msg| %>
+  <li><%= msg.content %></li>
+<% end %>
+</div>
+<div>
+  <% user.conversations.each do |conv| %>
+    <li><%= conv.name %></li>
+  <% end %>
+</div>
