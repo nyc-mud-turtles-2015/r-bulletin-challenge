@@ -11,21 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151018220150) do
+ActiveRecord::Schema.define(version: 20151019195447) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "categories", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "display_order"
+    t.string   "name",          null: false
+    t.integer  "display_order", null: false
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
   end
 
   create_table "conversations", force: :cascade do |t|
     t.integer  "topic_id"
-    t.string   "name"
+    t.string   "name",       null: false
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 20151018220150) do
   create_table "messages", force: :cascade do |t|
     t.integer  "conversation_id"
     t.integer  "user_id"
-    t.text     "content"
+    t.text     "content",         null: false
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 20151018220150) do
 
   create_table "topics", force: :cascade do |t|
     t.integer  "category_id"
-    t.string   "name"
+    t.string   "name",        null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
@@ -55,12 +55,14 @@ ActiveRecord::Schema.define(version: 20151018220150) do
   add_index "topics", ["category_id"], name: "index_topics_on_category_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "username"
-    t.string   "email"
+    t.string   "username",        null: false
+    t.string   "email",           null: false
     t.string   "password_digest"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
+
+  add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
   add_foreign_key "conversations", "topics"
   add_foreign_key "conversations", "users"

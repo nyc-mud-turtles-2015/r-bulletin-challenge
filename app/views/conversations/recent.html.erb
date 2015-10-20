@@ -1,0 +1,6 @@
+<h1>Recent Conversations</h1>
+<ul class="conversation-list">
+<% @recent_conversations.each do |conversation| %>
+    <li><%= link_to conversation.name, conversation_path(conversation) %> - last comment on <%= conversation.messages.first.created_at %></li>
+<% end %>
+</ul>

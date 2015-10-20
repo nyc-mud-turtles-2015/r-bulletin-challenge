@@ -1,0 +1,15 @@
+<h1>Messages in "<%= @conversation.name %>"</h1>
+<div class="message-list">
+<% @messages.each do |message| %>
+  <article id="<%= message.id %>">
+    <p><%= message.content %></p>
+    <footer>Posted by <%= message.user.username %> at <%= message.created_at %></footer>
+  </article>
+<% end %>
+</div>
+
+<%= form_for @message, url: conversation_messages_path(@conversation) do |f| %>
+  <%= f.label :content %>
+  <%= f.text_area :content %>
+  <%= f.submit "Post to conversation" %>
+<% end %>
