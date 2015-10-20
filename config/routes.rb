@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :topics, only: [:index, :show]
 
-  resources :conversations, only: [:show, :index] do
+  resources :conversations, only: [:show, :index, :new, :create] do
     resources :messages, only: [:new, :create]
 
     collection do
