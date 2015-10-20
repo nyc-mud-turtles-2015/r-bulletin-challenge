@@ -22,4 +22,6 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
 
   post '/conversations/:id/messages', to: 'messages#create'
+
+  get '/logout', to: 'sessions#destroy'
 end
