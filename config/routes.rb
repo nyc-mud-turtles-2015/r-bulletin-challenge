@@ -17,6 +17,10 @@ Rails.application.routes.draw do
     resources :messages
   end
 
+  resources :messages, only: [:show] do
+    resources :likes, only: [:new]
+  end
+
   get 'register' => 'users#new', as: 'register'
   post 'register' => 'users#create'
   get 'login' => 'users#login_form'#, as: 'login'

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151018220150) do
+ActiveRecord::Schema.define(version: 20151020052738) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,16 @@ ActiveRecord::Schema.define(version: 20151018220150) do
 
   add_index "conversations", ["topic_id"], name: "index_conversations_on_topic_id", using: :btree
   add_index "conversations", ["user_id"], name: "index_conversations_on_user_id", using: :btree
+
+  create_table "likes", force: :cascade do |t|
+    t.integer  "message_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "likes", ["message_id"], name: "index_likes_on_message_id", using: :btree
+  add_index "likes", ["user_id"], name: "index_likes_on_user_id", using: :btree
 
   create_table "messages", force: :cascade do |t|
     t.integer  "conversation_id"
@@ -64,6 +74,8 @@ ActiveRecord::Schema.define(version: 20151018220150) do
 
   add_foreign_key "conversations", "topics"
   add_foreign_key "conversations", "users"
+  add_foreign_key "likes", "messages"
+  add_foreign_key "likes", "users"
   add_foreign_key "messages", "conversations"
   add_foreign_key "messages", "users"
   add_foreign_key "topics", "categories"

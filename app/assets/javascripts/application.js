@@ -64,10 +64,21 @@ $(document).ready(function(){
       url: url,
       data: data
     }).done(function(response) {
-      debugger
       $('#messages').append(response);
       $('#new-message-link').show();
       $('.new_message').hide();
+    })
+  })
+
+  $(".message").on('click', '.like-btn', function(e) {
+    e.preventDefault();
+    var pointCount = $(this).parent().children('#message-points')
+    var url = $(this).attr('href');
+    $.ajax({
+      type: 'GET',
+      url: url
+    }).done(function(response) {
+      pointCount.html(response)
     })
   })
 
