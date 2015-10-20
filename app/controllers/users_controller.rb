@@ -13,6 +13,17 @@ class UsersController < ApplicationController
     end
   end
 
+  def show
+    @user = User.find_by(id: params[:id])
+
+    if @user && @user.id == session[:user_id]
+      @conversations = Conversation.where("user_id = ?", @user)
+      render :show
+    else
+      redirect_to login_path
+    end
+  end
+
   private
 
   def user_params
