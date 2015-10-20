@@ -1,0 +1,8 @@
+<%= form_for [@topic, @conversation] do |f| %>
+  Name: <%= f.text_field :name %><br />
+  <%= f.submit %>
+<% end %>
+
+<% unless flash[:error].nil?%>
+  <%=flash[:error]%>
+<% end %>

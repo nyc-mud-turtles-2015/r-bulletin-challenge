@@ -1,0 +1,5 @@
+<div class = 'message'>
+<p><%= message.content %></p>
+by <%= message.user.username %>
+<span id = "message-points"><%= message.likes.size %></span> Points | <%= link_to "Like", new_message_like_path(message), class: "like-btn" %>
+</div>

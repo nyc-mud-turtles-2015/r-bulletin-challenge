@@ -1,0 +1,3 @@
+<%= render @conversation %>
+<div id='new-message-div'><%= link_to "Post a new message", new_conversation_message_path(@conversation), id: 'new-message-link' %></div>
+<div id='messages'><%= render @messages %></div>
