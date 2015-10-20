@@ -3,7 +3,8 @@ class ConversationsController < ApplicationController
   before_action :load_conversation, only: [:show, :edit]
 
   def index
-    @conversations = Topic.find_by(id: params[:topic_id]).conversations
+    @topic = Topic.find(params[:topic_id])
+    @conversations = @topic.conversations
   end
 
   def new
@@ -12,14 +13,14 @@ class ConversationsController < ApplicationController
   end
 
   def create
-    conversation = Conversation.new(params[:conversation].permit(:name),topic_id: params[:topic_id])
+    conversation = Conversation.new(params[:conversation].permit(:name))
+    conversation.update(topic_id: params[:topic_id])
     current_user.conversations << conversation
     redirect_to topic_conversations_path
   end
 
   def show
   end
-
 
   def latest
     @conversations = Topic.find_by(id: params[:topic_id]).conversations.order(created_at: :desc).limit(5)

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :users
+  resources :users, only: [:show,:new,:create]
 
   resources :categories, only: [:index, :show] do
     resources :topics, only: [:index, :show]
@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :conversations, except: [:create] do
+  resources :conversations, only: [:show] do
     resources :messages
   end
 
