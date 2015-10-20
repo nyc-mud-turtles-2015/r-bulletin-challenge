@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def show
-    @user = User.find_by(id: session[:user_id])
+    current_user
   end
 
   def new
@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(params[:user].permit(:username, :email, :password))
+    @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
       redirect_to @user
@@ -16,5 +16,9 @@ class UsersController < ApplicationController
       flash[:error] = @user.errors.full_messages
       redirect_to register_path
     end
+  end
+
+  def user_params
+    params.require(:user).permit(:username, :email, :password)
   end
 end

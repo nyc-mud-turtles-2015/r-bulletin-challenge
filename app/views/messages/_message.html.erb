@@ -1,5 +1,5 @@
 <div>
-  <% if !@messages.nil? %>
+  <% if @messages.any? %>
     <% @messages.each do |message| %>
       <li><%= message.content %></li>
       <li><%= message.user.username %></li>

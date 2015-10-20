@@ -1,1 +1,3 @@
-<% binding.pry %>
+<% @conversations.each do |conv| %>
+  <li><%= link_to conv.name, conversation_path(conv) %></li>
+<% end %>

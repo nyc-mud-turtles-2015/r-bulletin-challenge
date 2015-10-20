@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   def login_form
-    render "/users/login"
+    render '/users/login'
   end
 
   def login
