@@ -1,3 +1,6 @@
+<%= link_to "Post a New Conversation", new_conversation_path %>
+
 <% @conversations.each do |conversation| %>
   <p><%= link_to conversation.name, conversation_path(conversation) %></p>
 <% end %>
+
