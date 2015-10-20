@@ -12,10 +12,15 @@ class ConversationsController < ApplicationController
   end
 
   def create
-    conversation = Conversation.new(params[:conversation].permit(:name))
-    conversation.topic_id = params[:topic_id]
-    current_user.conversations << conversation
-    redirect_to topic_path(params[:topic_id])
+    @conversation = Conversation.new(params[:conversation].permit(:name))
+    @conversation.topic_id = params[:topic_id]
+    @conversation.user_id = current_user.id
+    # current_user.conversations << conversation
+    if @conversation.save
+      redirect_to topic_path(params[:topic_id])
+    else
+      render "conversation#new"
+    end
   end
 
   def show
