@@ -15,7 +15,7 @@ class ConversationsController < ApplicationController
     conversation = Conversation.new(params[:conversation].permit(:name))
     conversation.topic_id = params[:topic_id]
     current_user.conversations << conversation
-
+    redirect_to topic_path(params[:topic_id])
   end
 
   def show
