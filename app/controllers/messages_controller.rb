@@ -8,6 +8,10 @@ class MessagesController < ApplicationController
   def new
     @message = Message.new
     @conversation = Conversation.find_by(id: params[:conversation_id])
+    # if request.xhr?
+    #   layout: false
+    # end
+    render layout: false if request.xhr?
   end
 
   def create
@@ -15,7 +19,11 @@ class MessagesController < ApplicationController
     @message.conversation_id = params[:conversation_id]
     @message.user_id = current_user.id
     if @message.save
-      redirect_to conversation_path(params[:conversation_id])
+      if request.xhr?
+        render @message, layout: false, locals: {conversation: @conversation}
+      else
+        redirect_to conversation_path(params[:conversation_id])
+      end
     else
       render "messages#new"
     end

@@ -9,6 +9,9 @@ class ConversationsController < ApplicationController
   def new
     @conversation = Conversation.new
     @topic = Topic.find(params[:topic_id])
+    if request.xhr?
+      render layout: false
+    end
   end
 
   def create
@@ -17,7 +20,11 @@ class ConversationsController < ApplicationController
     @conversation.user_id = current_user.id
     # current_user.conversations << conversation
     if @conversation.save
-      redirect_to topic_path(params[:topic_id])
+      if request.xhr?
+        render '/conversations/_conversation', layout: false, locals: {conversation: @conversation}
+      else
+        redirect_to topic_path(params[:topic_id])
+      end
     else
       render "conversation#new"
     end

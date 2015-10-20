@@ -1,0 +1,7 @@
+<div id='messages'>
+  <% if !@messages.nil? %>
+    <% @messages.each do |message| %>
+      <%= render message %>
+    <% end %>
+  <% end %>
+</div>

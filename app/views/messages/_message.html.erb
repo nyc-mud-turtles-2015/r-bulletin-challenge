@@ -1,8 +1,4 @@
-<div>
-  <% if !@messages.nil? %>
-    <% @messages.each do |message| %>
-      <p><%= message.content %></p>
-      by <%= message.user.username %>
-    <% end %>
-  <% end %>
+<div class = 'message'>
+<p><%= message.content %></p>
+by <%= message.user.username %>
 </div>
