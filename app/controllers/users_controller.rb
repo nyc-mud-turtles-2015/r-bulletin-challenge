@@ -15,9 +15,9 @@ class UsersController < ApplicationController
   end
 
   def show
-    if current_user && current_user.id == params[:id]
-      @latest_messages = @user.messages.order(created_at: :desc).limit(5)
-      @conversations = Conversation.where("user_id = ?", @user)
+    if current_user && current_user.id == params[:id].to_i
+      @latest_messages = current_user.messages.order(created_at: :desc).limit(5)
+      @conversations = Conversation.where("user_id = ?", current_user)
       render :show
     else
       redirect_to login_path
