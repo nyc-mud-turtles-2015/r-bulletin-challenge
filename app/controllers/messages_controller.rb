@@ -7,6 +7,7 @@ class MessagesController < ApplicationController
     conversation = Conversation.find_by(id: params[:conversation_id])
     @message = conversation.messages.build(content: params[:message][:content])
 
+    # Note: user_id is not mass-assignable. Our app controls this, not the user.
     @message.user_id = session[:user_id]
 
     if @message.save
