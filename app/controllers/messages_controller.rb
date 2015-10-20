@@ -8,7 +8,7 @@ class MessagesController < ApplicationController
     @message = conversation.messages.build(content: params[:message][:content])
 
     # Note: user_id is not mass-assignable. Our app controls this, not the user.
-    @message.user_id = session[:user_id]
+    @message.user_id = current_user.id
 
     if @message.save
       redirect_to conversation_path(conversation)

@@ -5,8 +5,9 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+
     if @user.save
-      session[:user_id] = @user.id
+      login(@user)
       redirect_to root_path
     else
       render :new
@@ -14,9 +15,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by(id: params[:id])
-
-    if @user && @user.id == session[:user_id]
+    if current_user && current_user.id == params[:id]
       @latest_messages = @user.messages.order(created_at: :desc).limit(5)
       @conversations = Conversation.where("user_id = ?", @user)
       render :show

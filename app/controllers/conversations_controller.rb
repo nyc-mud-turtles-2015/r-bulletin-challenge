@@ -16,7 +16,7 @@ class ConversationsController < ApplicationController
   def create
     @conversation = Conversation.new(conversation_params)
     @conversation.topic_id = params[:topic_id]
-    @conversation.user_id = session[:user_id]
+    @conversation.user_id = current_user.id
 
     if @conversation.save
       redirect_to conversation_path(@conversation)
