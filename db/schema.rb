@@ -35,8 +35,8 @@ ActiveRecord::Schema.define(version: 20151021003527) do
   add_index "conversations", ["user_id"], name: "index_conversations_on_user_id", using: :btree
 
   create_table "likes", force: :cascade do |t|
-    t.string   "user_id",    null: false
-    t.string   "message_id", null: false
+    t.integer  "user_id",    null: false
+    t.integer  "message_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "vote",       null: false
