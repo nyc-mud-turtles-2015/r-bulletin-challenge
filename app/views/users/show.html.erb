@@ -13,3 +13,10 @@
     <%= link_to message.content, conversation_path(message.conversation) %>
   <% end %>
 </div>
+
+<h2>Liked Messages</h2>
+<div class="messages">
+  <% @liked_messages.each do |message| %>
+    <%= link_to message.content, conversation_path(message.conversation) %>
+  <% end %>
+</div>
