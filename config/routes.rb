@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     resources :topics, only: [:index, :show] do
       resources :conversations, only: [:index, :show]
     end
+
     resources :messages, only: [:create]
     resource :sessions, only: [:create]
   end
@@ -12,6 +13,7 @@ Rails.application.routes.draw do
   resources :topics, only: [:index, :show] do
     resources :conversations, only: [:index, :show]
   end
+
   resources :messages, only: [:create]
 
   get 'conversations' => 'conversations#recent'
