@@ -1,4 +1,4 @@
-class MessagesController < ApplicationController
+ class MessagesController < ApplicationController
   def create
     msg = Message.create(message_params)
     if request.xhr?
