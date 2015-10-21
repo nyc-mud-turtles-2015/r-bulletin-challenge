@@ -12,4 +12,5 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require handlebars-v4.0.2
 //= require_tree .

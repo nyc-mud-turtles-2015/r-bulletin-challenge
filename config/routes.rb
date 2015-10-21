@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     resources :conversations, only: [:index, :show]
   end
   resources :messages, only: [:create]
-
+  get 'attorneys' => 'attorneys#page'
   get 'conversations' => 'conversations#recent'
   root 'topics#index'
   get 'register' => 'users#new'
