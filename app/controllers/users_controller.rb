@@ -17,6 +17,7 @@ class UsersController < ApplicationController
   def show
     if current_user && current_user.id == params[:id].to_i
       @latest_messages = current_user.messages.order(created_at: :desc).limit(5)
+      @liked_messages = current_user.liked_messages
       @conversations = Conversation.where("user_id = ?", current_user)
       render :show
     else
