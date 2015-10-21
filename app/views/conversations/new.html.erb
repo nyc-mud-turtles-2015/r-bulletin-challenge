@@ -1,0 +1,24 @@
+<%= form_for @conversation do |f| %>
+  <% if @conversation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@conversation.errors.count, "error") %> prohibited this conversation from being saved:</h2>
+      <ul>
+        <% @conversation.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= select_tag(:topic_id, options_for_select(@selection_options)) %>
+  </div>
+
+  <div class="field">
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,21 @@
+<% if current_user %>
+  <h2><%= link_to "Post New Message", new_conversation_message_path(@conversation) %></h2>
+<% end %>
+
+<% @messages.each do |message| %>
+  <div class="message">
+    <p><%= message.content %></p>
+    <p>Posted on: <%= message.created_at %></p>
+    <p>Message Karma: <%= message.karma %></p>
+    <%= form_tag likes_path do %>
+      <input type="hidden" name="vote" value="1">
+      <input type="hidden" name="message_id" value="<%= message.id %>">
+      <input type="submit" value="Upvote">
+    <% end %>
+    <%= form_tag likes_path do %>
+      <input type="hidden" name="vote" value="-1">
+      <input type="hidden" name="message_id" value="<%= message.id %>">
+      <input type="submit" value="Downvote">
+    <% end %>
+  </div>
+<% end %>

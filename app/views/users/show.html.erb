@@ -1,0 +1,22 @@
+<h1><%= current_user.username %></h1>
+
+<h2>Conversations Started</h2>
+<div class="conversations">
+  <% @conversations.each do |conversation| %>
+    <%= link_to conversation.name, conversation_path(conversation) %>
+  <% end %>
+</div>
+
+<h2>Most Recent Messages</h2>
+<div class="messages">
+  <% @latest_messages.each do |message| %>
+    <%= link_to message.content, conversation_path(message.conversation) %>
+  <% end %>
+</div>
+
+<h2>Liked Messages</h2>
+<div class="messages">
+  <% @liked_messages.each do |message| %>
+    <%= link_to message.content, conversation_path(message.conversation) %>
+  <% end %>
+</div>
