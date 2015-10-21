@@ -21,8 +21,7 @@
       Hello <%= current_user.username %>
       <%= link_to 'Logout', logout_path %>
     <% else %>
-      <%= link_to 'Login', login_path %>
-      <%= link_to 'Register', register_path %>
+      <%= link_to 'Login with Twitter', '/auth/twitter' %>
     <% end %>
       <%= render partial:'crumbs' %>
       <%= yield %>
