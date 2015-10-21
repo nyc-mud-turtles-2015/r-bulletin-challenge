@@ -23,6 +23,11 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create]
 
+  get 'auth/:provider/callback' => 'sessions#create'
+  get 'auth/failure' => redirect('/')
+  get 'signout' => 'sessions#destroy', as: 'signout'
+
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
