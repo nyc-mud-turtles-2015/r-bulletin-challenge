@@ -24,4 +24,6 @@ Rails.application.routes.draw do
   post '/conversations/:id/messages', to: 'messages#create'
 
   get '/logout', to: 'sessions#destroy'
+
+  post '/likes', to: 'likes#create'
 end
