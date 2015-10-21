@@ -4,12 +4,20 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by(username: params[:session][:username])
-    if user && user.authenticate(params[:session][:password])
+    if auth_hash.nil?
+      user = User.find_by(username: params[:session][:username])
+      if user && user.authenticate(params[:session][:password])
+        login(user)
+        redirect_to root_path
+      else
+        p 'auth failed'
+        p params
+        render 'new'
+      end
+    else
+      user = User.find_or_create_from_auth_hash(auth_hash)
       login(user)
       redirect_to root_path
-    else
-      render 'new'
     end
   end
 

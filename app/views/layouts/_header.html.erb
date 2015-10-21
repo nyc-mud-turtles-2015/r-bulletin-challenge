@@ -3,7 +3,12 @@
 <ul>
   <li><%= link_to "Recent", conversations_recent_path %></li>
   <% if logged_in? %>
-    <li><%= current_user_name %></li>
+    <li>
+      <% if current_user.profile_image %>
+      <img src="<%= current_user.profile_image %>">
+      <% end %>
+      <%= current_user_name %>
+    </li>
     <li><%= link_to "Logout", logout_path, method: :delete %></li>
   <% else %>
     <li><%= link_to "Login", login_path %>
