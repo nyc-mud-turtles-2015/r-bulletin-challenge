@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   resources :messages, only: [:create]
 
   get 'conversations' => 'conversations#recent'
-  root 'topics#index'
+  root 'welcome#index'
   get 'register' => 'users#new'
   get 'logout' => 'sessions#destroy'
   get 'login' => 'sessions#new'

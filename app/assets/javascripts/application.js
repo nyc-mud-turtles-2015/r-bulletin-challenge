@@ -12,4 +12,41 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
+// = require_tree .
+//= require handlebars-v4.0.2
+
+$(document).ready(function(){
+  var topicsSource   = $("#topics-template").html();
+  var topicsTemplate = Handlebars.compile(topicsSource);
+
+  var topicShowSource   = $("#topic-show-template").html();
+  var topicShowTemplate = Handlebars.compile(topicShowSource);
+
+  $.ajax({
+    url: '/api/topics',
+    dataType: 'json'
+  }).then(function(response){
+    var html = topicsTemplate({topics: response});
+    $('#welcome-index').html(html);
+  }).fail(function(){
+    console.log('fail');
+  });
+
+  $('#welcome-index').on('click', '.topic-link', function(event){
+    event.preventDefault();
+    var topicId = $(this).data('id');
+    var $topicDiv = $(this).parent();
+    $.ajax({
+      url: '/api/topics/'+topicId,
+      dataType: 'json'
+    }).then(function(response){
+      if ($topicDiv.find('.individual-topic').length === 0) {
+        var html = topicShowTemplate(response);
+        $topicDiv.append(html);
+      } else {
+        $topicDiv.find('.individual-topic').toggle()
+        }
+    }).fail(function(){console.log("YOU FAILED")})
+  });
+
+})

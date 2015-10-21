@@ -27,5 +27,12 @@
       <%= render partial:'crumbs' %>
       <%= yield %>
   </div>
+
+  <script id="topic-template" type="text/x-handlebars-template">
+    <div class="topic">
+      <h1>{{name}} ({{category.name}})</h1>
+    </div>
+  </script>
+
 </body>
 </html>

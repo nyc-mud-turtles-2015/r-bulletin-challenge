@@ -1,0 +1,23 @@
+<div id = 'welcome-index'></div>
+
+<script id="topics-template" type="text/x-handlebars-template">
+   {{#each topics}}
+   <div class = "row">
+      <a data-id={{id}} class = "topic-link" href ="#"> {{name}} </a>
+      <a data-id={{category.id}} class = "category-link" href = "#">({{category.name}})</a>
+    </div>
+    {{/each}}
+</script>
+
+
+<script id="topic-show-template" type="text/x-handlebars-template">
+  <div class = "individual-topic">
+    <h2>{{name}}</h2>
+    {{#each conversations_reverse_cron}}
+      <div>{{name}}</div>
+    {{/each}}
+  <div>
+</script>
+
+
+
