@@ -4,4 +4,8 @@ class Message < ActiveRecord::Base
   has_many :likes
 
   validates :user, :conversation, presence: true
+
+  def karma
+    Like.where("message_id = ?", [id]).sum(:vote)
+  end
 end
