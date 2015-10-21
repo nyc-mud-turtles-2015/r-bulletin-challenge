@@ -1,0 +1,16 @@
+<a class="top-crimes-link" href="http://nflarrest.com/api/v1/crime">Top Crimes</a>
+
+<div class="top-crimes-list">
+</div>
+
+<script id="crimes-template" type="text/x-handlebars-template">
+  <div class="crime">
+    <h2><a class="top-players-link" id="{{ Category }}" href="http://nflarrest.com/api/v1/crime/topPlayers/{{ Category }}">{{ Category }}</a></h2> <h3>{{ arrest_count }}</h3>
+  <div>
+</script>
+
+<script id="player-template" type="text/x-handlebars-template">
+  <div class="player">
+    <h2>{{ Name }}</a></h2> <h3>{{ arrest_count }}</h3>
+  <div>
+</script>
