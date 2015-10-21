@@ -7,7 +7,7 @@ class LikesController < ApplicationController
     like.message_id = @message.id
     like.user_id = current_user.id
 
-    binding.pry
+    like.save
 
     redirect_to conversation_path(@message.conversation)
   end
