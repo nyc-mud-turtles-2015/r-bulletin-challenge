@@ -19,6 +19,8 @@ Rails.application.routes.draw do
   get 'register' => 'users#new'
   get 'logout' => 'sessions#destroy'
   get 'login' => 'sessions#new'
+  get '/auth/:provider/callback', to: 'sessions#create_with_oauth'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
