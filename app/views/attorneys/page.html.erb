@@ -1,0 +1,25 @@
+<h1>Get you a lawyer!</h1>
+<%= form_tag "/page", method: "get", id: 'name-search' do %>
+  <%= label_tag(:atty_name, "Search by last name:") %>
+  <%= text_field_tag(:atty_name) %>
+  <%= submit_tag("Find Them!") %>
+<% end %>
+<%= form_tag "/page", method: "get", id: 'firm-search' do %>
+  <%= label_tag(:firm_name, "Search by firm:") %>
+  <%= text_field_tag(:firm_name) %>
+  <%= submit_tag("Find Them!") %>
+<% end %>
+
+<hr>
+<div id='search-results'></div>
+
+<script id="atty-template" type="text/x-handlebars-template">
+  {{#each . }}
+    <div class="atty">
+      <p>
+        {{last_name}}, {{first_name}} {{middle_name}} ({{law_school}} | {{year_admitted}}) {{company_name}}
+      </p>
+    </div>
+    <hr>
+  {{/each }}
+</script>

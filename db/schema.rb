@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151018220150) do
+ActiveRecord::Schema.define(version: 20151021213814) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,8 +38,12 @@ ActiveRecord::Schema.define(version: 20151018220150) do
     t.integer  "conversation_id"
     t.integer  "user_id"
     t.text     "content"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.string   "clip_file_name"
+    t.string   "clip_content_type"
+    t.integer  "clip_file_size"
+    t.datetime "clip_updated_at"
   end
 
   add_index "messages", ["conversation_id"], name: "index_messages_on_conversation_id", using: :btree
@@ -60,6 +64,8 @@ ActiveRecord::Schema.define(version: 20151018220150) do
     t.string   "password_digest"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.string   "provider"
+    t.string   "uid"
   end
 
   add_foreign_key "conversations", "topics"
