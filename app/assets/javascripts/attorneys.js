@@ -28,10 +28,7 @@ function firmSearch(event) {
 function searchDone(response) {
   var source   = $("#atty-template").html();
   var template = Handlebars.compile(source);
-  var attyList = '';
-  response.forEach(function(attorney) {
-    attyList += template(attorney);
-  });
+  var attyList = template(response)
   $('#search-results').html(attyList);
 }
 

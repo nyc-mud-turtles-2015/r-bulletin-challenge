@@ -14,10 +14,12 @@
 <div id='search-results'></div>
 
 <script id="atty-template" type="text/x-handlebars-template">
-  <div class="atty">
-    <p>
-      {{last_name}}, {{first_name}} {{middle_name}} ({{law_school}} | {{year_admitted}}) {{company_name}}
-    </p>
-  </div>
-  <hr>
+  {{#each . }}
+    <div class="atty">
+      <p>
+        {{last_name}}, {{first_name}} {{middle_name}} ({{law_school}} | {{year_admitted}}) {{company_name}}
+      </p>
+    </div>
+    <hr>
+  {{/each }}
 </script>
