@@ -5,7 +5,9 @@
   <% if logged_in? %>
     <li>
       <% if current_user.profile_image %>
-      <img src="<%= current_user.profile_image %>">
+      <%= image_tag current_user.profile_image %>
+      <% elsif current_user.avatar %>
+      <%= image_tag current_user.avatar.url %>
       <% end %>
       <%= current_user_name %>
     </li>
