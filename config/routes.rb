@@ -21,4 +21,6 @@ Rails.application.routes.draw do
   get 'register' => 'users#new'
   get 'logout' => 'sessions#destroy'
   get 'login' => 'sessions#new'
+
+  get 'handlebars' => 'handlebars#show'
 end
